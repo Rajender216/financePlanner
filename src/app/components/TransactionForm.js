@@ -37,7 +37,7 @@ export default function TransactionForm({ refresh }) {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-2 max-w-md">
+    <form onSubmit={handleSubmit} className="flex flex-col gap-2 max-w-md mb-10">
       <Input
         placeholder="Amount"
         type="number"

@@ -37,7 +37,7 @@ export default function TransactionList({ refresh }) {
   };
 
   return (
-   <div className="mt-6 space-y-3 ">
+   <div className="mt-10 space-y-3 ">
   {transactions.map((tx) => (
     <div
       key={tx._id}

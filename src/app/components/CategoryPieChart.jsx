@@ -27,7 +27,7 @@ export default function CategoryPieChart({ refresh }) {
   }, [refresh]);
 
   return (
-    <Card className="w-full max-w-md mx-auto mt-8">
+    <Card className="w-full max-w-md mx-auto mt-10">
       <CardHeader>
         <CardTitle className="text-center">Category Breakdown</CardTitle>
       </CardHeader>

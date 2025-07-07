@@ -35,7 +35,7 @@ export default function ExpenseChart({ refresh }) {
   }, [refresh]);
 
   return (
-    <div className="h-64 mt-8">
+    <div className="h-64 mt-10">
       <h2 className="text-xl font-semibold mb-2">Monthly Expenses</h2>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart data={data}>
