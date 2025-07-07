@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import toast from "react-hot-toast";
@@ -10,15 +11,16 @@ export default function TransactionForm({ refresh }) {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("/api/transactions", {
-      method: "POST",
-      body: JSON.stringify(form),
-    });
 
-    if (res.ok) {
+    try {
+      const res = await axios.post("/api/transactions", form);
+
       toast.success("Transaction added!");
       setForm({ amount: "", description: "", date: "" });
       refresh();
+    } catch (error) {
+      toast.error("Failed to add transaction");
+      console.error("Axios POST error:", error);
     }
   };
 

@@ -14,7 +14,7 @@ export default function HomePage() {
       <h1 className="text-3xl font-bold mb-6">Personal Finance Tracker</h1>
       <TransactionForm refresh={rerender} />
       <ExpenseChart refresh={refresh} />
-      <TransactionList refresh={refresh} />
+      <TransactionList refresh={rerender} />
     </main>
   );
 }
