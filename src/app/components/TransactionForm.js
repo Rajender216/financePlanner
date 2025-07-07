@@ -5,9 +5,21 @@ import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import toast from "react-hot-toast";
+import {
+  Select,
+  SelectTrigger,
+  SelectValue,
+  SelectContent,
+  SelectItem,
+} from "@/components/ui/select";
 
 export default function TransactionForm({ refresh }) {
-  const [form, setForm] = useState({ amount: "", description: "", date: "" });
+  const [form, setForm] = useState({
+    amount: "",
+    description: "",
+    date: "",
+    category: "",
+  });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -45,6 +57,21 @@ export default function TransactionForm({ refresh }) {
         onChange={(e) => setForm({ ...form, date: e.target.value })}
         required
       />
+      <Select
+        onValueChange={(value) => setForm({ ...form, category: value })}
+        value={form.category}
+      >
+        <SelectTrigger>
+          <SelectValue placeholder="Select Category" />
+        </SelectTrigger>
+        <SelectContent>
+          <SelectItem value="Food">Food</SelectItem>
+          <SelectItem value="Travel">Travel</SelectItem>
+          <SelectItem value="Shopping">Shopping</SelectItem>
+          <SelectItem value="Bills">Bills</SelectItem>
+          <SelectItem value="Other">Other</SelectItem>
+        </SelectContent>
+      </Select>
       <Button type="submit">Add</Button>
     </form>
   );

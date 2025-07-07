@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import toast from "react-hot-toast";
+import { Badge } from "@/components/ui/badge";
+
 
 export default function TransactionList({ refresh }) {
   const [transactions, setTransactions] = useState([]);
@@ -35,24 +37,35 @@ export default function TransactionList({ refresh }) {
   };
 
   return (
-    <div className="mt-6 space-y-3">
-      {transactions.map((tx) => (
-        <div
-          key={tx._id}
-          className="p-3 border rounded shadow-sm flex justify-between"
-        >
-          <div>
-            <p className="font-semibold">₹{tx.amount}</p>
-            <p>{tx.description}</p>
-            <p className="text-sm text-gray-500">
-              {new Date(tx.date).toDateString()}
-            </p>
-          </div>
-          <Button onClick={() => deleteTx(tx._id)} variant="destructive">
-            Delete
-          </Button>
-        </div>
-      ))}
+   <div className="mt-6 space-y-3 ">
+  {transactions.map((tx) => (
+    <div
+      key={tx._id}
+      className="p-3 border rounded shadow-sm flex justify-between items-start"
+    >
+      {/* LEFT SIDE */}
+      <div className="space-y-1">
+        <p className="font-semibold text-lg">₹{tx.amount}</p>
+        <p>{tx.description}</p>
+        <p className="text-sm text-gray-500">
+          {new Date(tx.date).toDateString()}
+        </p>
+        <Badge variant="outline" className="text-xs mt-1">
+          {tx.category}
+        </Badge>
+      </div>
+
+      {/* RIGHT SIDE */}
+      <Button
+        onClick={() => deleteTx(tx._id)}
+        variant="destructive"
+        className="ml-4"
+      >
+        Delete
+      </Button>
     </div>
+  ))}
+</div>
+
   );
 }

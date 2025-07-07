@@ -11,10 +11,10 @@ export async function POST(req) {
   try {
     await connectToDatabase();
     const body = await req.json();
-    const { amount, description, date } = body;
+    const { amount, description, date, category } = body;
 
     // ✅ Validation
-    if (!amount || !description || !date) {
+    if (!amount || !description || !date || !category) {
       return Response.json(
         { success: false, error: "All fields are required" },
         { status: 400 }
@@ -28,7 +28,7 @@ export async function POST(req) {
       );
     }
 
-    await Transaction.create({ amount, description, date });
+    await Transaction.create({ amount, description, date, category });
 
     return Response.json(
       { success: true, message: "Transaction created successfully" },
